@@ -1,0 +1,46 @@
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.content-area {
+  flex: 1;
+  overflow: hidden;
+  padding: 16px;
+  position: relative;
+  transition: padding 0.3s ease;
+}
+
+/* Adjustments when sidebar is open/closed */
+.sidebar-open .content-area {
+  padding-left: 16px;
+}
+
+.sidebar-closed .content-area {
+  padding-left: 16px;
+}
+
+/* Media queries for responsive layout */
+@media (max-width: 768px) {
+  .sidebar-open .content-area {
+    padding-left: 16px;
+  }
+  
+  .sidebar-closed .content-area {
+    padding-left: 16px;
+  }
+}
+
+/* Animation for layout transitions */
+.main-content {
+  transition: all 0.3s ease;
+}

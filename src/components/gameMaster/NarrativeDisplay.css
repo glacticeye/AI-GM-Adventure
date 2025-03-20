@@ -1,0 +1,158 @@
+.narrative-display {
+    line-height: 1.5;
+    font-size: 0.95rem;
+  }
+  
+  .narrative-display p {
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+  
+  .narrative-display p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .narrative-display h1, 
+  .narrative-display h2, 
+  .narrative-display h3, 
+  .narrative-display h4, 
+  .narrative-display h5, 
+  .narrative-display h6 {
+    margin-top: 16px;
+    margin-bottom: 8px;
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    color: #e0e0e0;
+  }
+  
+  .narrative-display h1 {
+    font-size: 1.5rem;
+  }
+  
+  .narrative-display h2 {
+    font-size: 1.3rem;
+  }
+  
+  .narrative-display h3 {
+    font-size: 1.2rem;
+  }
+  
+  .narrative-display h4 {
+    font-size: 1.1rem;
+  }
+  
+  .narrative-display h5, .narrative-display h6 {
+    font-size: 1rem;
+  }
+  
+  .narrative-display ul, .narrative-display ol {
+    margin-top: 4px;
+    margin-bottom: 8px;
+    padding-left: 20px;
+  }
+  
+  .narrative-display li {
+    margin-bottom: 4px;
+  }
+  
+  .narrative-display a {
+    color: #8cb3d9;
+    text-decoration: none;
+  }
+  
+  .narrative-display a:hover {
+    text-decoration: underline;
+  }
+  
+  .narrative-display blockquote {
+    border-left: 3px solid #5c90b3;
+    margin: 8px 0;
+    padding: 4px 12px;
+    color: #ccc;
+    font-style: italic;
+    background-color: rgba(92, 144, 179, 0.1);
+  }
+  
+  .narrative-display pre {
+    background-color: #282c34;
+    border-radius: 4px;
+    padding: 12px;
+    overflow-x: auto;
+    margin: 12px 0;
+  }
+  
+  .narrative-display code {
+    font-family: 'Consolas', 'Monaco', 'Andale Mono', monospace;
+    font-size: 0.9em;
+    background-color: #282c34;
+    color: #e6e6e6;
+    padding: 2px 4px;
+    border-radius: 3px;
+  }
+  
+  .narrative-display pre code {
+    padding: 0;
+    background-color: transparent;
+  }
+  
+  .narrative-display table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 12px 0;
+  }
+  
+  .narrative-display th, .narrative-display td {
+    border: 1px solid #444;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .narrative-display th {
+    background-color: #3a3f44;
+    font-weight: 600;
+  }
+  
+  .narrative-display tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  
+  /* Custom styling for dice notation and game terms */
+  .narrative-display .dice-notation {
+    font-weight: bold;
+    color: #ff9966;
+    font-family: 'Consolas', 'Monaco', 'Andale Mono', monospace;
+  }
+  
+  .narrative-display .game-term {
+    font-weight: bold;
+    color: #8cb3d9;
+  }
+  
+  .narrative-display .game-mechanic {
+    font-style: italic;
+    color: #aba;
+  }
+  
+  /* Transition effects for content changes */
+  .narrative-display {
+    transition: opacity 0.2s ease;
+  }
+  
+  .narrative-display.loading {
+    opacity: 0.5;
+  }
+  
+  /* Styling for highlighted text */
+  .narrative-display mark {
+    background-color: rgba(255, 204, 0, 0.2);
+    color: #ffcc00;
+    padding: 0 2px;
+  }
+  
+  /* Styling for horizontal rules */
+  .narrative-display hr {
+    border: 0;
+    height: 1px;
+    background-color: #444;
+    margin: 16px 0;
+  }

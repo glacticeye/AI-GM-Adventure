@@ -1,0 +1,52 @@
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+
+.loading-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #8cb3d9;
+  opacity: 0.6;
+}
+
+.dot1 {
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.dot2 {
+  animation: pulse 1.5s infinite ease-in-out 0.2s;
+}
+
+.dot3 {
+  animation: pulse 1.5s infinite ease-in-out 0.4s;
+}
+
+.loading-text {
+  font-size: 0.85rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}

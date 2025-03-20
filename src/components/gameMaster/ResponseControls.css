@@ -1,0 +1,72 @@
+.response-controls {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  background-color: #23272a;
+  border-top: 1px solid #1a1d20;
+}
+
+.control-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background-color: #3a3f44;
+  border: none;
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.control-button:hover:not(:disabled) {
+  background-color: #444a52;
+}
+
+.control-button:active:not(:disabled) {
+  background-color: #2e3338;
+}
+
+.control-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.control-button svg {
+  margin-right: 4px;
+}
+
+.control-button.retry {
+  margin-right: 8px;
+}
+
+.control-button.retry:hover:not(:disabled) {
+  color: #87ceeb;
+}
+
+.control-button.edit:hover:not(:disabled) {
+  color: #90ee90;
+}
+
+.control-info {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: #999;
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .control-info {
+    display: none;
+  }
+  
+  .control-button span {
+    display: none;
+  }
+  
+  .control-button svg {
+    margin-right: 0;
+  }
+}

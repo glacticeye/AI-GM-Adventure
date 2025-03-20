@@ -1,0 +1,242 @@
+.game-master-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #2c2f33;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.game-master-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: #23272a;
+  border-bottom: 1px solid #1a1d20;
+}
+
+.game-master-header h2 {
+  margin: 0;
+  font-family: 'Merriweather', serif;
+  font-size: 1.4rem;
+  color: #e0e0e0;
+}
+
+.conversation-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.empty-conversation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  color: #a0a0a0;
+  font-style: italic;
+}
+
+.message {
+  display: flex;
+  margin-bottom: 16px;
+  animation: fadeIn 0.3s ease;
+}
+
+.message.user {
+  align-self: flex-end;
+  max-width: 80%;
+}
+
+.message.assistant {
+  align-self: flex-start;
+  max-width: 90%;
+}
+
+.message.system {
+  align-self: center;
+  max-width: 80%;
+}
+
+.message.error {
+  color: #ff5555;
+}
+
+.message-avatar {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-right: 12px;
+}
+
+.message-content {
+  background-color: #3a3f44;
+  padding: 12px 16px;
+  border-radius: 6px;
+  color: #f0f0f0;
+  position: relative;
+}
+
+.message.user .message-content {
+  background-color: #4e6f82;
+}
+
+.message.assistant .message-content {
+  background-color: #3a3f44;
+}
+
+.message.system .message-content {
+  background-color: #444;
+  font-style: italic;
+}
+
+.message.generating .message-content {
+  background-color: #3a3f44;
+  min-height: 24px;
+  min-width: 200px;
+}
+
+.edited-tag {
+  font-size: 0.7rem;
+  color: #aaa;
+  margin-left: 8px;
+  font-style: italic;
+}
+
+.input-container {
+  display: flex;
+  padding: 12px 16px;
+  background-color: #23272a;
+  border-top: 1px solid #1a1d20;
+}
+
+.input-container textarea {
+  flex: 1;
+  min-height: 48px;
+  padding: 12px;
+  background-color: #3a3f44;
+  border: 1px solid #1a1d20;
+  border-radius: 4px;
+  color: #f0f0f0;
+  resize: none;
+  outline: none;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease;
+}
+
+.input-container textarea:focus {
+  border-color: #5c90b3;
+}
+
+.input-container textarea:disabled {
+  background-color: #333;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.input-container button {
+  padding: 0 20px;
+  margin-left: 8px;
+  background-color: #5c90b3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.input-container button:hover:not(:disabled) {
+  background-color: #4a7b9d;
+}
+
+.input-container button:active:not(:disabled) {
+  background-color: #3d6583;
+}
+
+.input-container button:disabled {
+  background-color: #4a5259;
+  color: #a0a0a0;
+  cursor: not-allowed;
+}
+
+.response-edit-container {
+  padding: 12px 16px;
+  background-color: #23272a;
+  border-top: 1px solid #1a1d20;
+}
+
+.response-edit-container textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 12px;
+  background-color: #3a3f44;
+  border: 1px solid #1a1d20;
+  border-radius: 4px;
+  color: #f0f0f0;
+  resize: vertical;
+  outline: none;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.edit-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.edit-buttons button {
+  padding: 8px 16px;
+  background-color: #3a3f44;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.edit-buttons button:first-child {
+  background-color: #5a5f68;
+}
+
+.edit-buttons button:last-child {
+  background-color: #5c90b3;
+}
+
+.edit-buttons button:hover {
+  filter: brightness(1.1);
+}
+
+.connection-warning {
+  text-align: center;
+  padding: 8px;
+  background-color: #a33327;
+  color: white;
+  font-size: 0.85rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
