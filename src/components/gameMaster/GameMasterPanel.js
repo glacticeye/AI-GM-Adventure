@@ -35,6 +35,23 @@ const GameMasterPanel = () => {
       inputRef.current.focus();
     }
   }, []);
+
+  // Load conversation from localStorage on initial load
+  useEffect(() => {
+    const savedConversation = localStorage.getItem('conversation');
+    if (savedConversation) {
+      try {
+        setConversation(JSON.parse(savedConversation));
+      } catch (e) {
+        console.error('Failed to parse saved conversation:', e);
+      }
+    }
+  }, []);
+
+  // Save conversation to localStorage when it changes
+  useEffect(() => {
+    localStorage.setItem('conversation', JSON.stringify(conversation));
+  }, [conversation]);
   
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
@@ -107,6 +124,20 @@ const GameMasterPanel = () => {
     } finally {
       setIsGenerating(false);
     }
+  };
+  
+  const handleDiceRoll = (rollResult) => {
+    // Add a system message to the conversation showing the dice roll
+    const diceMessage = {
+      role: 'system',
+      content: `🎲 ${rollResult.dice}: ${rollResult.values.join(', ')}${
+        rollResult.modifier ? ` ${rollResult.modifier > 0 ? '+' : ''}${rollResult.modifier}` : ''
+      } = ${rollResult.total}`,
+      timestamp: new Date().toISOString(),
+      isDiceRoll: true
+    };
+    
+    setConversation(prev => [...prev, diceMessage]);
   };
   
   const handleRetry = async () => {
@@ -205,11 +236,57 @@ const GameMasterPanel = () => {
     setEditedResponse('');
   };
   
+  const handleClearConversation = () => {
+    if (window.confirm('Are you sure you want to clear the entire conversation? This cannot be undone.')) {
+      setConversation([]);
+    }
+  };
+  
+  const handleExportConversation = () => {
+    // Create a downloadable JSON file
+    const dataStr = JSON.stringify(conversation, null, 2);
+    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+    
+    const exportFileDefaultName = `dnd-adventure-${new Date().toISOString().slice(0, 10)}.json`;
+    
+    const linkElement = document.createElement('a');
+    linkElement.setAttribute('href', dataUri);
+    linkElement.setAttribute('download', exportFileDefaultName);
+    linkElement.click();
+  };
+  
   return (
     <div className="game-master-panel">
       <div className="game-master-header">
         <h2>Game Master</h2>
-        <DiceRoller />
+        <div className="header-actions">
+          {conversation.length > 0 && (
+            <>
+              <button 
+                className="clear-conversation-button" 
+                onClick={handleClearConversation}
+                title="Clear conversation"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="3 6 5 6 21 6"></polyline>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                </svg>
+              </button>
+              <button 
+                className="export-conversation-button" 
+                onClick={handleExportConversation}
+                title="Export conversation"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+              </button>
+            </>
+          )}
+          <DiceRoller onRollResult={handleDiceRoll} />
+        </div>
       </div>
       
       <div className="conversation-container">
@@ -221,10 +298,10 @@ const GameMasterPanel = () => {
           conversation.map((message, index) => (
             <div 
               key={index} 
-              className={`message ${message.role} ${message.isError ? 'error' : ''}`}
+              className={`message ${message.role} ${message.isError ? 'error' : ''} ${message.isDiceRoll ? 'dice-roll' : ''}`}
             >
               <div className="message-avatar">
-                {message.role === 'user' ? '🧙‍♂️' : message.role === 'assistant' ? '📜' : '⚠️'}
+                {message.role === 'user' ? '🧙‍♂️' : message.role === 'assistant' ? '📜' : message.isDiceRoll ? '🎲' : '⚠️'}
               </div>
               <div className="message-content">
                 <NarrativeDisplay content={message.content} />
