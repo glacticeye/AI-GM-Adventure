@@ -1,22 +1,13 @@
 {
   "files": {
-    "main.css": "/AI-GM-Adventure/static/css/main.e8f1bbce.chunk.css",
-    "main.js": "/AI-GM-Adventure/static/js/main.610986a1.chunk.js",
-    "main.js.map": "/AI-GM-Adventure/static/js/main.610986a1.chunk.js.map",
-    "runtime-main.js": "/AI-GM-Adventure/static/js/runtime-main.be355625.js",
-    "runtime-main.js.map": "/AI-GM-Adventure/static/js/runtime-main.be355625.js.map",
-    "static/js/2.4aabcc69.chunk.js": "/AI-GM-Adventure/static/js/2.4aabcc69.chunk.js",
-    "static/js/2.4aabcc69.chunk.js.map": "/AI-GM-Adventure/static/js/2.4aabcc69.chunk.js.map",
+    "main.css": "/AI-GM-Adventure/static/css/main.d52968dc.css",
+    "main.js": "/AI-GM-Adventure/static/js/main.42490950.js",
     "index.html": "/AI-GM-Adventure/index.html",
-    "precache-manifest.5e8a577966589a3611739d2a836f0727.js": "/AI-GM-Adventure/precache-manifest.5e8a577966589a3611739d2a836f0727.js",
-    "service-worker.js": "/AI-GM-Adventure/service-worker.js",
-    "static/css/main.e8f1bbce.chunk.css.map": "/AI-GM-Adventure/static/css/main.e8f1bbce.chunk.css.map",
-    "static/js/2.4aabcc69.chunk.js.LICENSE.txt": "/AI-GM-Adventure/static/js/2.4aabcc69.chunk.js.LICENSE.txt"
+    "main.d52968dc.css.map": "/AI-GM-Adventure/static/css/main.d52968dc.css.map",
+    "main.42490950.js.map": "/AI-GM-Adventure/static/js/main.42490950.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.be355625.js",
-    "static/js/2.4aabcc69.chunk.js",
-    "static/css/main.e8f1bbce.chunk.css",
-    "static/js/main.610986a1.chunk.js"
+    "static/css/main.d52968dc.css",
+    "static/js/main.42490950.js"
   ]
 }
