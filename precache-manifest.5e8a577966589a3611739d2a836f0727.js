@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "36e0862572e6dcead38f3fb3ebc79b4e",
+    "revision": "a92d2571f979aaf69f576270a6f4ac1d",
     "url": "/AI-GM-Adventure/index.html"
   },
   {
