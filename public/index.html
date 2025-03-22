@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
+  <!-- Add base href for GitHub Pages -->
+  <base href="%PUBLIC_URL%/">
+  
   <!-- Primary Meta Tags -->
   <title>D&D LLM Game Master</title>
   <meta name="title" content="D&D LLM Game Master">
@@ -113,10 +116,10 @@
       }
     }, 10000);
     
-    // Register service worker for PWA functionality
+    // Register service worker for PWA functionality - Fixed path for GitHub Pages
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js')
+        navigator.serviceWorker.register('%PUBLIC_URL%/service-worker.js')
           .catch(error => {
             console.error('Service worker registration failed:', error);
           });
