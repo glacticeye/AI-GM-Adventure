@@ -1,14 +1,32 @@
-import React, { useState } from 'react';
+// src/components/common/DiceRoller.js
+import React, { useState, useEffect } from 'react';
 import './DiceRoller.css';
 
 // Dice types available in D&D
 const DICE_TYPES = [4, 6, 8, 10, 12, 20, 100];
 
-const DiceRoller = () => {
+const DiceRoller = ({ onRollResult }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [rolls, setRolls] = useState([]);
   const [customDice, setCustomDice] = useState('');
   const [customQuantity, setCustomQuantity] = useState(1);
+  
+  // Load rolls from localStorage on mount
+  useEffect(() => {
+    const savedRolls = localStorage.getItem('diceRolls');
+    if (savedRolls) {
+      try {
+        setRolls(JSON.parse(savedRolls).slice(0, 10));
+      } catch (e) {
+        console.error('Failed to parse saved dice rolls:', e);
+      }
+    }
+  }, []);
+  
+  // Save rolls to localStorage when they change
+  useEffect(() => {
+    localStorage.setItem('diceRolls', JSON.stringify(rolls.slice(0, 10)));
+  }, [rolls]);
 
   // Roll a die of the given number of sides
   const rollDie = (sides, quantity = 1) => {
@@ -21,13 +39,22 @@ const DiceRoller = () => {
       total += value;
     }
     
-    // Add the roll to the history
-    setRolls(prev => [{
+    const rollResult = {
       id: Date.now(),
       dice: `${quantity}d${sides}`,
       values: newRolls,
       total: total
-    }, ...prev.slice(0, 9)]); // Keep only the last 10 rolls
+    };
+    
+    // Add the roll to the history
+    setRolls(prev => [rollResult, ...prev.slice(0, 9)]);
+    
+    // Call the callback if provided
+    if (onRollResult) {
+      onRollResult(rollResult);
+    }
+    
+    return rollResult;
   };
 
   // Handle the custom dice roll
@@ -52,23 +79,37 @@ const DiceRoller = () => {
         total += value;
       }
       
-      // Add the roll to the history
-      setRolls(prev => [{
+      const rollResult = {
         id: Date.now(),
         dice: customDice,
         values: newRolls,
         total: total,
         modifier: modifier
-      }, ...prev.slice(0, 9)]); // Keep only the last 10 rolls
+      };
+      
+      // Add the roll to the history
+      setRolls(prev => [rollResult, ...prev.slice(0, 9)]);
+      
+      // Call the callback if provided
+      if (onRollResult) {
+        onRollResult(rollResult);
+      }
       
       // Reset the custom dice input
       setCustomDice('');
+      
+      return rollResult;
     }
   };
 
   // Toggle the dice roller panel
   const toggleDiceRoller = () => {
     setIsOpen(!isOpen);
+  };
+
+  // Function to clear all rolls
+  const clearRolls = () => {
+    setRolls([]);
   };
 
   return (
@@ -120,7 +161,17 @@ const DiceRoller = () => {
           </form>
           
           <div className="dice-history">
-            <h4>Roll History</h4>
+            <div className="dice-history-header">
+              <h4>Roll History</h4>
+              {rolls.length > 0 && (
+                <button className="clear-history" onClick={clearRolls} title="Clear history">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  </svg>
+                </button>
+              )}
+            </div>
             {rolls.length > 0 ? (
               <ul>
                 {rolls.map(roll => (
