@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/AI-GM-Adventure/static/css/main.d52968dc.css",
-    "main.js": "/AI-GM-Adventure/static/js/main.42490950.js",
+    "main.css": "/AI-GM-Adventure/static/css/main.2ae6a4f7.css",
+    "main.js": "/AI-GM-Adventure/static/js/main.9f60f81c.js",
     "index.html": "/AI-GM-Adventure/index.html",
-    "main.d52968dc.css.map": "/AI-GM-Adventure/static/css/main.d52968dc.css.map",
-    "main.42490950.js.map": "/AI-GM-Adventure/static/js/main.42490950.js.map"
+    "main.2ae6a4f7.css.map": "/AI-GM-Adventure/static/css/main.2ae6a4f7.css.map",
+    "main.9f60f81c.js.map": "/AI-GM-Adventure/static/js/main.9f60f81c.js.map"
   },
   "entrypoints": [
-    "static/css/main.d52968dc.css",
-    "static/js/main.42490950.js"
+    "static/css/main.2ae6a4f7.css",
+    "static/js/main.9f60f81c.js"
   ]
 }
